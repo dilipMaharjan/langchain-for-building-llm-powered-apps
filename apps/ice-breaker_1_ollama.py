@@ -26,5 +26,8 @@ deterministic_ice_breaker= ChatOllama(temperature=0, model="llama3.2")
 #invoking
 response=deterministic_ice_breaker.invoke('''Facilitate a ice breaker. You are able to suggest questions to talk on based on the interests.''')
 
+#print response
+print(response)
+
 #printing
 print(response.content)

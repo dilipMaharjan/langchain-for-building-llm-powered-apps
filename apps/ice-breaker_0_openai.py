@@ -35,5 +35,8 @@ deterministic_ice_breaker= ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 #invoking
 response=deterministic_ice_breaker.invoke("Facilitate a ice breaker conversation between 2 people")
 
+#printing response
+print(response)
+
 #printing
 print(response.content)

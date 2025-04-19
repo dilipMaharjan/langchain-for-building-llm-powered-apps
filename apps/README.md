@@ -107,7 +107,109 @@ To build effective applications, it’s important to clearly define and manage t
 ---
 
 ## Chatbot Memory  
-(Include content here)  
+
+## 🧠 What is Chat Memory?
+
+Chat memory stores previous inputs and outputs from the conversation. This context allows the model to generate more relevant responses, simulate memory, and behave more naturally in extended dialogues.
+
+---
+
+## 📜 What is Chat History?
+
+**Chat history** refers to the structured log of past interactions between a human and an AI. In LangChain, memory modules use this history to create context for the current prompt.
+
+Chat history can be stored as:
+- A **list of messages** (buffer memory)
+- A **moving window** (limited number of messages)
+- A **token-limited buffer** (limited by token count)
+- A **summary string** (summary of conversation)
+
+These formats affect how much of the conversation is remembered and how it's represented.
+
+---
+
+## 🧩 Chat Memory Types and Definitions
+
+### 1. `ConversationBufferMemory`
+> **Definition:** Stores the entire chat history as a buffer of messages.
+
+- Keeps full conversation.
+- Simple and effective for short sessions.
+
+```python
+from langchain.memory import ConversationBufferMemory
+
+memory = ConversationBufferMemory()
+```
+
+---
+
+### 2. `ConversationBufferWindowMemory`
+> **Definition:** Stores only the most recent `k` interactions.
+
+- Trims older messages.
+- Helps control memory size and token usage.
+
+```python
+from langchain.memory import ConversationBufferWindowMemory
+
+memory = ConversationBufferWindowMemory(k=3)
+```
+
+---
+
+### 3. `ConversationTokenBufferMemory`
+> **Definition:** Stores memory based on the number of tokens, not message count.
+
+- Trims history based on token count.
+- Great for managing LLM token limits.
+
+```python
+from langchain.memory import ConversationTokenBufferMemory
+
+memory = ConversationTokenBufferMemory(llm=llm, max_token_limit=1000)
+```
+
+---
+
+### 4. `ConversationSummaryMemory`
+> **Definition:** Generates a summary of the conversation using an LLM to reduce context length.
+
+- Compresses long chats into a short summary.
+- Ideal for long-running agents.
+
+```python
+from langchain.memory import ConversationSummaryMemory
+
+memory = ConversationSummaryMemory(llm=llm)
+```
+
+---
+
+## 🛠️ Viewing and Resetting Chat History
+
+- **View history contents:**
+
+```python
+print(memory.buffer)
+```
+
+- **Clear/reset history:**
+
+```python
+memory.clear()
+```
+
+---
+
+## 📝 Summary Table
+
+| Memory Type                    | Stores History As         | Best For                         |
+|-------------------------------|---------------------------|----------------------------------|
+| `ConversationBufferMemory`     | All messages (no limit)    | Short or simple conversations    |
+| `ConversationBufferWindowMemory` | Last `k` messages          | Mid-length chats with context     |
+| `ConversationTokenBufferMemory` | Messages up to token limit | Token-efficient conversations     |
+| `ConversationSummaryMemory`     | Summarized text            | Long-running sessions or agents   |
 
 ---
 
