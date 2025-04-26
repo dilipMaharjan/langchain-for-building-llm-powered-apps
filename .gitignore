@@ -7,3 +7,5 @@ CACHEDIR.TAG
 Pipfile*
 pyvenv*
 __pycache*
+
+.DS_Store
