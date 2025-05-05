@@ -9,3 +9,6 @@ pyvenv*
 __pycache*
 
 .DS_Store
+
+bin/*
+lib/*

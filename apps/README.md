@@ -246,6 +246,30 @@ Batching in LCEL allows multiple inputs to be processed at once through the same
 🌀 Stream  
 Streaming in LCEL allows outputs from language models to be received incrementally as they are generated. This is useful for real-time applications where immediate feedback is important, such as chatbots or live data processing.
 
+🧱 Runnables
+
+LangChain Runnables are the foundational building blocks for constructing modular, composable, and testable pipelines in language model applications. This section covers their definition, composition, parallelism, and visualization.
+
+🔹 What Are Runnables?
+Runnables are the core abstraction in LangChain representing any unit of computation that takes input and produces output. They enable a consistent and composable interface for building LLM-based pipelines.
+
+🔹 Chaining Runnables
+Runnables can be chained to form a sequence where the output of one becomes the input of the next. This allows modular and readable pipeline construction.
+
+🔹 Piping with `.pipe()`
+`.pipe()` is a method for chaining Runnables explicitly. It is functionally equivalent to using the `|` operator but may be clearer in complex setups.
+
+🔹 Branching with `RunnableParallel`
+`RunnableParallel` enables multiple Runnables to be executed in parallel on different branches of input. Each branch can process the input differently and return a combined result.
+
+🔹 Visualizing Chains with `grandalf`
+Chains of Runnables can be visualized as graphs using the `grandalf` library. This is useful for debugging, documentation, and understanding pipeline structure.
+
+✅ Summary
+- **Runnables** are composable units of work.
+- Use chaining and piping to build modular workflows.
+- Apply `.map()` for parallel inputs and `RunnableParallel` for branching logic.
+- Visualize chains using `grandalf` to gain clarity on structure and flow.
 
 
 
