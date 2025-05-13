@@ -271,5 +271,27 @@ Chains of Runnables can be visualized as graphs using the `grandalf` library. Th
 - Apply `.map()` for parallel inputs and `RunnableParallel` for branching logic.
 - Visualize chains using `grandalf` to gain clarity on structure and flow.
 
+Lambda Function
+
+    A **lambda function** is a small, anonymous function defined using a single expression. In LangChain, it is used to embed concise logic within pipelines — such as transforming inputs, conditionally selecting outputs, or defining temporary behaviors — without requiring a full named function. Its main strength is simplicity and quick inline usage.
+
+RunnableLambda
+
+    **RunnableLambda** is a LangChain utility that wraps a regular Python function — including lambdas — into a **Runnable** interface. This allows it to behave like other LangChain components (e.g., models, retrievers) and be composed into chains. It standardizes function execution so it can be invoked, streamed, or combined with other steps.
+
+@chain Decorator
+
+    The **@chain** decorator is used to define a custom step in a LangChain pipeline. When applied to a function, it converts it into a RunnableChain, making it compatible with LangChain's chaining system. This allows developers to build and reuse modular steps that can be linked together with inputs and outputs flowing between them.
+
+itemgetter
+
+    **`itemgetter`** is a utility (from Python’s `operator` module) that retrieves specific values from a data structure, like a dictionary. In LangChain, it’s often used to extract fields (e.g., `"input"` or `"question"`) from structured input objects before passing them to another component. This helps route or filter information cleanly inside a chain.
+
+Memory
+
+    **Memory** in LangChain refers to a component that stores and retrieves state across multiple interactions. It allows chains or agents to maintain **context** — for example, remembering prior messages in a conversation. Different memory types (like buffer or summary memory) determine how information is stored and recalled, enabling more natural and coherent interactions over time.
+
+
+
 
 

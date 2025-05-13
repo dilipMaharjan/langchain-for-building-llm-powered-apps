@@ -1,5 +1,3 @@
-from itertools import chain
-from tracemalloc import start
 from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 from langchain.prompts.chat import ChatPromptTemplate
