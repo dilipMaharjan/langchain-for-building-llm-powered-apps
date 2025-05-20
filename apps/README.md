@@ -6,7 +6,7 @@
 - [Model Input](#model-input)  
 - [Model Output](#model-output)  
 - [Chatbot Memory](#chatbot-memory)  
-- [Document Retrieval](#document-retrieval)  
+- [Retrieval-Augmented Generation](#retrieval-augmented-generation)  
 - [Agent Tooling](#agent-tooling)  
 - [LangChain Expression Language (LCEL)](#langchain-expression-language-lcel)  
 
@@ -213,8 +213,63 @@ memory.clear()
 
 ---
 
-## Document Retrieval  
-(Include content here)  
+## Retrieval-Augmented Generation 
+
+📚 What is Retrieval-Augmented Generation (RAG)?
+**Definition:** RAG is a method that enhances LLMs by retrieving relevant external information (documents) at query time and using that data to generate more accurate responses.
+
+**Key Idea:** Instead of training the LLM on every possible document, you give it the right documents *just in time* when a user asks a question.
+
+**Analogy:** Like a student who quickly refers to a textbook before answering a question.
+
+🧱 RAG Pipeline: The Building Blocks
+1. **Document Loading** – Bringing in files (PDFs, DOCX, etc.) into your system.
+2. **Document Splitting** – Breaking large texts into smaller, digestible chunks.
+3. **Embedding** – Converting text chunks into vectors (numeric representations).
+4. **Storing** – Saving those vectors in a searchable vector database.
+5. **Retrieval** – Finding the most relevant chunks when a user asks something.
+6. **Generation** – Using the retrieved context to generate a response.
+
+
+🥽 Document Loading
+Bring in raw content from various formats:
+- **PyPDFLoader** – Loads and extracts text from PDFs.
+- **Docx2txtLoader** – Extracts text from Microsoft Word `.docx` files.
+
+
+✂️ Document Splitting
+Split documents into manageable pieces:
+- **Character Text Splitter** – Divides based on fixed character count.
+- **Markdown Header Text Splitter** – Splits based on markdown headings to preserve structure.
+
+
+🧠 Document Embedding
+Convert each document chunk into a vector (a list of numbers) so that we can search for similar ones later.
+
+- Embedding models like **OpenAI Embeddings** are commonly used.
+
+
+💾 Vector Store
+Store and index your document vectors:
+- **Chroma Vectorstore** – A fast, lightweight tool to store and query vectors.
+- **Managing Vector Stores** – Allows inspection, deletion, and update of stored vectors.
+
+
+🔍 Retrieval Techniques
+Find the most relevant document chunks:
+- **Similarity Search** – Fetches chunks closest in meaning to the user’s query.
+- **Maximal Marginal Relevance (MMR)** – Improves diversity in results by reducing overlap.
+- **Vector Backend Retriever** – Plug-in layer for accessing different vector stores.
+
+🧾 Generation Phase
+- **Stuffing Documents** – Put the retrieved chunks into the prompt alongside the question.
+- **Generating Response** – Use the LLM to answer using that prompt context.
+
+
+Summary
+- RAG allows LLMs to stay current with private/internal knowledge.
+- It uses retrieval to bring relevant content at response time.
+- You don’t need to re-train your model — just manage your data pipeline.
 
 ---
 
