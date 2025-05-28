@@ -12,3 +12,6 @@ __pycache*
 
 bin/*
 lib/*
+share/*
+apps/verify_hugging_face_token.py
+
