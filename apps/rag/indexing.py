@@ -1,8 +1,6 @@
 #Document Loading
 
 
-from gradio import update
-from httpx import delete
 from document_loading import load_documents_from_file
 
 # docs=load_documents_from_file("DSA_Challenge.pdf")

@@ -14,7 +14,7 @@ def split_document(pages: str, chunk_size: int = 500, chunk_overlap: int = 0) ->
         list: A list of text chunks.
     """
     character_splitter = CharacterTextSplitter(
-        separator=" ",
+        separator="\n",
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap
     )

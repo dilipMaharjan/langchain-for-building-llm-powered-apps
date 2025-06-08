@@ -1,7 +1,5 @@
 #Storing in Vector Store
-from hmac import new
-import re
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 
 def store_in_chromadb(page_splits,embeddings):
     vector_store=Chroma.from_documents(documents=page_splits,
